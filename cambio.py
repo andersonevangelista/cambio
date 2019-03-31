@@ -27,7 +27,8 @@ if response.status_code == 200:
     # comando para  
     dados = response.json()
     day = dados['date']
-    print("Acessando dados do dia %s/%s/%s" % (day[8:], day[5:7], day[0:4]))
+    day = day[8:10]+"/"+day[5:7]+"/"+day[0:4]
+    print("Acessando dados do dia %s" % day)
 
     # conversão das moedas escolhidas no dicionário para BRL fazendo TAXA DO REAL / TAXA DA MOEDA ESCOLHIDA
     euro_real = round (dados['rates']['BRL'] / dados['rates']['EUR'], 2)
@@ -39,8 +40,8 @@ if response.status_code == 200:
     print("1 EUR está valendo R$%.2f" % euro_real)
     print("1 USD está valendo R$%.2f" % dollar_real)
     print("1 BTC está valendo R$%.2f" % btc_real)
-    df = pd.DataFrame({'Moedas':['Euro','Dolar', 'Bitcoin'], 'Valores':[euro_real, dollar_real, btc_real]})
-    df.to_csv("valores.csv", index=False, sep=";")
+    df = pd.DataFrame({'Moedas':['Euro','Dolar', 'Bitcoin'], 'Valores':[euro_real, dollar_real, btc_real], 'Data da consulta':[day, '', '']})
+    df.to_csv("valores.csv", index=False, sep=";", decimal=",")
     print(" ")
     print("O arquivo foi exportado com sucesso para a pasta do projeto")
 else:
