@@ -15,12 +15,14 @@ url = "http://data.fixer.io/api/latest?access_key=a88e5172c7cc3ff6d8322073432c23
 
 # apresenta uma mensagem para dar a sensação que está funcionando
 print("Acessando base de dados...")
-
+print(" ")
 # Fazer requisição ao site
 response = requests.get(url)
 if response.status_code == 200:
     print("Conseguiu acessar a base de dados!")
+    print(" ")
     print("Buscando informações das moedas...")
+    print(" ")
     
     # comando para  
     dados = response.json()
@@ -33,10 +35,13 @@ if response.status_code == 200:
     btc_real = round (dados['rates']['BRL'] / dados['rates']['BTC'], 2)
 
     # mostra os valores de euro, dollar e btc em real
+    print(" ")
     print("1 EUR está valendo R$%.2f" % euro_real)
     print("1 USD está valendo R$%.2f" % dollar_real)
     print("1 BTC está valendo R$%.2f" % btc_real)
     df = pd.DataFrame({'Moedas':['Euro','Dolar', 'Bitcoin'], 'Valores':[euro_real, dollar_real, btc_real]})
     df.to_csv("valores.csv", index=False, sep=";")
+    print(" ")
+    print("O arquivo foi exportado com sucesso para a pasta do projeto")
 else:
     print("Site com problemas")
