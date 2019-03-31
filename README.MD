@@ -3,13 +3,14 @@
 
 
 # Cambio com Python
-Um script para pegar os valores, via requisição web, das cotações das principais moedas mundiais:
+Script criado com o intuito de pegar os valores, via requisição web, das cotações das principais moedas mundiais:
   - Dollar
   - Euro
   - Bitcoin
 
 
 
+API utilizada: [FIXER.IO](https://fixer.io/)
 ### Desenvolvedor
 
  - Anderson Evangelista 
