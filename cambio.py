@@ -19,6 +19,8 @@ if response.status_code == 200:
     
     # comando para  
     dados = response.json()
+    day = dados['date']
+    print("Acessando dados do dia %s/%s/%s" % (day[8:], day[5:7], day[0:4]))
 
     # conversão das moedas escolhidas no dicionário para BRL fazendo TAXA DO REAL / TAXA DA MOEDA ESCOLHIDA
     euro_real = dados['rates']['BRL'] / dados['rates']['EUR']
